@@ -1,4 +1,4 @@
-( function ( $, L, prettySize ) {
+( function ( $, L ) {
 	var map, heat,
 		heatOptions = {
 			tileOpacity: 1,
@@ -87,7 +87,7 @@
 
 		} );
 
-		var fileSize = prettySize( file.size );
+		var fileSize = formatBytes( file.size );
 
 		status( 'Preparing to import file ( ' + fileSize + ' )...' );
 
@@ -162,7 +162,7 @@
 
 	function parseJSONFile( file, oboeInstance ) {
 		var fileSize = file.size;
-		var prettyFileSize = prettySize(fileSize);
+		var prettyFileSize = formatBytes( fileSize );
 		var chunkSize = 512 * 1024; // bytes
 		var offset = 0;
 		var self = this; // we need a reference to the current object
@@ -200,11 +200,11 @@
 	}
 
 	/*
-        Default behavior for file upload (no chunking)	
+	Default behavior for file upload (no chunking)	
 	*/
 
 	function parseKMLFile( file ) {
-		var fileSize = prettySize( file.size );
+		var fileSize = formatBytes( file.size );
 		var reader = new FileReader();
 		reader.onprogress = function ( e ) {
 			var percentLoaded = Math.round( ( e.loaded / e.total ) * 100 );
@@ -243,4 +243,16 @@
 		return locations;
 	}
 
-}( jQuery, L, prettySize ) );
+	// https://stackoverflow.com/a/18650828
+	function formatBytes(bytes, decimals = 2, k = 1024) {
+		if (bytes === 0) return '0 Bytes';
+
+		const dm = decimals < 0 ? 0 : decimals;
+		const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+
+		const i = Math.floor(Math.log(bytes) / Math.log(k));
+
+		return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+	}
+
+}( jQuery, L ) );
