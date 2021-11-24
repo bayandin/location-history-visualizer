@@ -76,13 +76,6 @@ h2 {
 	text-align: center
 }
 
-.note {
-  padding: 10px;
-  text-align: center;
-  background-color: #ffeb3b;
-  border-radius: 8px;
-}
-
 .credit {
   padding-top: 4px;
   margin-top: 12px;
@@ -220,21 +213,9 @@ h2 {
   }
 }
 
-/* email signup */
-.email-form {
+.launch-form {
   margin: 16px 0;
   text-align: center;
-}
-
-input#email {
-  font-size: 16px;
-  font-family: PTSans, Helvetica, Arial, sans-serif;
-  border-radius: 2px;
-  background-color: white;
-  padding: 6px 6px;
-  min-width: 200px;
-  border: 1px solid #ccc;
-  outline: 0;
 }
 
 button#launch {

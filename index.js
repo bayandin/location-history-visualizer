@@ -43,9 +43,6 @@
 	}
 
 	function stageTwo ( file ) {
-    // Google Analytics event - heatmap upload file
-    ga('send', 'event', 'Heatmap', 'upload', undefined, file.size);
-
 		heat = L.heatLayer( [], heatOptions ).addTo( map );
 
 		var type;
@@ -100,9 +97,6 @@
 	}
 
 	function stageThree ( numberProcessed ) {
-    // Google Analytics event - heatmap render
-    ga('send', 'event', 'Heatmap', 'render', undefined, numberProcessed);
-
 		var $done = $( '#done' );
 
 		// Change tabs :D
@@ -113,22 +107,11 @@
 		// Update count
 		$( '#numberProcessed' ).text( numberProcessed.toLocaleString() );
 
-    $( '#launch' ).click( function () {
-      var $email = $( '#email' );
-      if ( $email.is( ':valid' ) ) {
-        $( this ).text( 'Launching... ' );
-        $.post( '/heatmap/submit-email.php', {
-          email: $email.val()
-        } )
-        .always( function () {
-          $( 'body' ).addClass( 'map-active' );
-          $done.fadeOut();
-          activateControls();
-        } );
-      } else {
-        alert( 'Please enter a valid email address to proceed.' );
-      }
-    } );
+		$( '#launch' ).click( function () {
+			$( 'body' ).addClass( 'map-active' );
+			$done.fadeOut();
+			activateControls();
+		} );
 
 		function activateControls () {
 			var $tileLayer = $( '.leaflet-tile-pane' ),
