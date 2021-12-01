@@ -1,6 +1,6 @@
 # location-history-visualizer
 
-**Available online: [locationhistoryvisualizer.com/heatmap/](https://locationhistoryvisualizer.com/heatmap/)**
+**Available online: [alexander.bayand.in/location-history-visualizer](https://alexander.bayand.in/location-history-visualizer/)**
 
 A tool for visualizing your complete, consolidated, collected Google [Location History](https://google.com/locationhistory).
 
@@ -9,9 +9,10 @@ It works directly in your web browser &ndash; no software to download, no packag
 *location-history-visualizer* takes raw Google Takeout output and produces a heatmap of all of your location data over time, overlaid on an interactive map.
 
 ## Packages used
-* [leaflet.js](http://leafletjs.com/), for rendering the interactive map
-* [leaflet.heat](https://github.com/Leaflet/Leaflet.heat), for rendering the heatmap overlay
-* [oboe.js](http://oboejs.com), for processing said gigantic files
+* [leaflet.js](https://leafletjs.com/), for rendering the interactive map
+* [leaflet.heat](https://github.com/bayandin/Leaflet.heat), for rendering the heatmap overlay; patched to use `rbush` library (see below)
+* [rbush](https://github.com/mourner/rbush), for speeding up points filtering
+* [oboe.js](https://github.com/jimhigson/oboe.js/), for processing said gigantic files
 
 
 ## License

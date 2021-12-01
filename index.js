@@ -19,7 +19,7 @@
 		// Initialize the map
 		map = L.map( 'map' ).setView( [0,0], 2 );
 		L.tileLayer( 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-			attribution: 'location-history-visualizer is open source and available <a href="https://github.com/theopolisme/location-history-visualizer">on GitHub</a>. Map data &copy; <a href="https://openstreetmap.org">OpenStreetMap</a> contributors.',
+			attribution: 'location-history-visualizer is open source and available <a href="https://github.com/bayandin/location-history-visualizer">on GitHub</a>. Map data &copy; <a href="https://openstreetmap.org">OpenStreetMap</a> contributors.',
 			maxZoom: 18,
 			minZoom: 2
 		} ).addTo( map );
@@ -80,11 +80,8 @@
 			return oboe.drop;
 		} ).done( function () {
 			status( 'Generating map...' );
-			heat._latlngs = latlngs;
-
-			heat.redraw();
+			heat.setLatLngs(latlngs);
 			stageThree(  /* numberProcessed */ latlngs.length );
-
 		} );
 
 		var fileSize = formatBytes( file.size );
@@ -215,8 +212,7 @@
 			var latlngs;
 			status( 'Generating map...' );
 			latlngs = getLocationDataFromKml( e.target.result );
-			heat._latlngs = latlngs;
-			heat.redraw();
+			heat.setLatLngs(latlngs);
 			stageThree( latlngs.length );
 		}
 		reader.onerror = function () {
